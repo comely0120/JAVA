@@ -1,26 +1,65 @@
-package java_20200515;
-//Customer 클래스
+package java_20200521;
+
 public class Customer {
-	//클래스의 멤버 변수 - instance 변수, static 변수, final 변수
-	//인스턴스 변수(name, email, phone, balance, isReleased)
-	//객체가 생성될 때만 만들어지는 변수
-	 String name;
-	 String email;
-	 String phone;
-	 double balance;
-	 boolean isReleased;
-	 static double interestRate;
-	//상수는 대문자로 쓰는것이 관례
-	//상수는 한번 정해지면 값을 변경할 수 없음으로 일반적으로 static final로
-	//사용한다.
-	 static final String BANKNAME = "신한은행";
+	private String name;
+	private String addr;
+
+	public Customer(String name, String addr) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.addr = addr;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((addr == null) ? 0 : addr.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (addr == null) {
+			if (other.addr != null)
+				return false;
+		} else if (!addr.equals(other.addr))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", addr=" + addr + "]";
+	}
+
 }
-
-
-
-
-
-
-
-
-
